@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <p>
+        <b>Aranacak Müşteri Adı:</b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
 <a href="/Musteri/YeniMusteri/" class="btn btn-info">Yeni Müşteri Ekle</a>
 <table class="table table-bordered">
     <tr>
@@ -13,6 +21,7 @@
         <th>MÜŞTERİ SOYADI</th>
         <th>SİL</th>
         <th>GÜNCELLE</th>
+        <th>ALERT</th>
     </tr>
     <tbody>
         @foreach (var mstr in Model)
@@ -23,6 +32,7 @@
                 <td>@mstr.MUSTERİSOYAD</td>
                 <td><a href="/Musteri/Sil/@mstr.MUSTERIID" class="btn btn-danger">SİL</a> </td>
                 <td><a href="/Musteri/Guncelle/@mstr.MUSTERIID" class="btn btn-success">GÜNCELLE</a> </td>
+                <td>@Html.ActionLink("SİL", "Sil", new { id = mstr.MUSTERIID }, new { @class = "btn btn-warning", onclick = "return confirm('Gerçekten Silmek İstiyor Musunuz?')" })</td>
             </tr>
         }
     </tbody>

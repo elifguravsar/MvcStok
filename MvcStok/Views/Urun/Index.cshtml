@@ -6,17 +6,19 @@
 }
 
 <a href="/Urun/YeniUrun/" class="btn btn-info">Yeni Ürün Ekle</a>
-<table class="table table-bordered">
-    <tr>
-        <th>ÜRÜN ID</th>
-        <th>ÜRÜN ADI</th>
-        <th>ÜRÜN KATEGORİSİ</th>
-        <th>ÜRÜN MARKA</th>
-        <th>ÜRÜN FİYAT</th>
-        <th>ÜRÜN STOK</th>
-        <th>SİL</th>
-        <th>GÜNCELLE</th>
-    </tr>
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN ADI</th>
+            <th>ÜRÜN KATEGORİSİ</th>
+            <th>ÜRÜN MARKA</th>
+            <th>ÜRÜN FİYAT</th>
+            <th>ÜRÜN STOK</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+        </tr>
+    </thead>
     <tbody>
         @foreach (var urun in Model)
         {
@@ -34,3 +36,10 @@
     </tbody>
 </table>
 
+<link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+
+<script>
+    $('#tbl1').DataTable();
+   
+</script>

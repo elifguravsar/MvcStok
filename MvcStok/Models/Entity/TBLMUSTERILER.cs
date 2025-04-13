@@ -11,7 +11,8 @@ namespace MvcStok.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLMUSTERILER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,11 @@ namespace MvcStok.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
+        [Required(ErrorMessage ="Bu Alanı Boş Bırakamazsınız....")]
+        [StringLength(50, ErrorMessage ="En Fazla 50 Karakterlik İsim Giriniz....")]
         public string MUSTERİAD { get; set; }
+        [Required(ErrorMessage = "Bu Alanı Boş Bırakamazsınız....")]
+        [StringLength(50, ErrorMessage = "En Fazla 50 Karakterlik Soyadı Giriniz....")]
         public string MUSTERİSOYAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

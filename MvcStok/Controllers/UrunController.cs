@@ -61,15 +61,15 @@ namespace MvcStok.Controllers
         }
 
         [HttpPost]
-        public ActionResult Guncelle(TBLURUNLER p1)
+        public ActionResult Guncelle(TBLURUNLER p)
         {
-            var urun = db.TBLURUNLER.Find(p1.URUNID);
-            urun.URUNAD = p1.URUNAD;
-            urun.MARKA = p1.MARKA;
-            urun.FIYAT = p1.FIYAT;
-            urun.STOK = p1.STOK;
-            var ktg = db.TBLKATEGORILER.Where(m => m.KATEGORIID == p1.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
-            p1.TBLKATEGORILER = ktg;
+            var urun = db.TBLURUNLER.Find(p.URUNID);
+            urun.URUNAD = p.URUNAD;
+            urun.FIYAT = p.FIYAT;
+            urun.MARKA = p.MARKA;
+            urun.STOK = p.STOK;
+            var ktg = db.TBLKATEGORILER.Where(m => m.KATEGORIID == p.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+            urun.URUNKATEGORI = ktg.KATEGORIID;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
